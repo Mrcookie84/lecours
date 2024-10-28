@@ -36,6 +36,7 @@ public class TurnManager : MonoBehaviour
     private int fireATK = 15;
     private int waterATK = 10;
     private int heal = 50;
+    private int ogiveNucleaire = 2147483647;
     
     //----------------------------------------------------------------------
     
@@ -127,6 +128,16 @@ public class TurnManager : MonoBehaviour
         PlayerHP.text = playerHp.ToString();
         DisableAI();
         SetUpPlayer();
+    }
+    
+    public void PlayerOGIVENUCLEAIRE()
+    {
+        aiHp -= ogiveNucleaire;
+        aiHp = Mathf.Clamp(aiHp,  0,  100);
+        AihealthSlider.value = aiHp;
+        AiHP.text = aiHp.ToString();
+        DisablePlayer();
+        SetUpAI();
     }
 
     public void PlayerHeal()
